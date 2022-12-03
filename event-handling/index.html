@@ -28,7 +28,11 @@
         <h1>Task 1</h1>
         <div id="area" @mousemove="updateCoordinates($event)">
           <span>x: {{ x }}, y: {{ y }}</span>
+<<<<<<< HEAD
           <div class="dead-spot">DEAD SPOT</div>
+=======
+          <div class="dead-spot" @mousemove="stopUpdate()">DEAD SPOT</div>
+>>>>>>> ac1c8eb01995e1f98c553780c65c14abb6a04fa7
         </div>
 
         <h1>Task 2</h1>

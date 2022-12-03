@@ -103,7 +103,10 @@ th {
 
   .header__task-name {
     width: 50%;
+<<<<<<< HEAD
     color: #4caf4c;
+=======
+>>>>>>> ac1c8eb01995e1f98c553780c65c14abb6a04fa7
   }
 
   .header__bootcamp-link {

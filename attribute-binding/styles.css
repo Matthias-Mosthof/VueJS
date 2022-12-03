@@ -30,7 +30,11 @@ h2 {
 }
 
 .header__bootcamp-link {
+<<<<<<< HEAD
   background-color: rgb(55, 11, 104);
+=======
+  background-color: #370b68;
+>>>>>>> ac1c8eb01995e1f98c553780c65c14abb6a04fa7
   color: #fff;
   text-decoration: none;
   display: none;
@@ -54,10 +58,13 @@ main p {
   line-height: 1.5;
 }
 
+<<<<<<< HEAD
 .bg-green {
   background-color: green;
 }
 
+=======
+>>>>>>> ac1c8eb01995e1f98c553780c65c14abb6a04fa7
 @media only screen and (min-width: 1140px) {
   .header {
     font-size: 1.5rem;
