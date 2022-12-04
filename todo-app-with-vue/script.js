@@ -174,21 +174,56 @@ Vue.createApp({
   async created() {
     const response = await fetch("http://localhost:3000/todos");
     this.todos = await response.json();
-    console.log(this.test);
   },
   methods: {
     safeInputText(event) {
       this.addTodos.description = event.target.value;
     },
 
-    async addText() {
-      await fetch("http://localhost:3000/todos", {
+    addText() {
+      fetch("http://localhost:3000/todos", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(this.addTodos),
       });
+    },
+    removeTodo(event) {
+      this.todos.forEach((todo) => {
+        if (todo.done === true) {
+          let id = todo.id;
+          fetch("http://localhost:3000/todos/" + id, {
+            method: "DELETE",
+          })
+            .then((res) => res.json())
+            .then(() => {});
+        }
+      });
+    },
+
+    safeDone(event) {
+      const checkedTodoDescription = event.path[1].innerText;
+
+      let id = 0;
+      let updatedTodo = undefined;
+      this.todos.forEach((todo) => {
+        if (checkedTodoDescription === todo.description) {
+          todo.done = event.target.checked;
+          id = todo.id;
+          updatedTodo = todo;
+          fetch("http://localhost:3000/todos/" + id, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updatedTodo),
+          });
+        }
+      });
+    },
+    filterOpen() {
+      this.todos.forEach(() => {});
     },
   },
 }).mount("#app");

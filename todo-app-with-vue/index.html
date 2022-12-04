@@ -17,18 +17,42 @@
           <h2>Filter & Options</h2>
         </section>
         <section>
-          <input type="radio" id="all" class="radiobtn" />
+          <input
+            type="radio"
+            id="all"
+            name="filter"
+            value="all"
+            checked
+            class="radiobtn"
+            @click="filterNone()"
+          />
           <label for="all">All</label>
         </section>
         <section>
-          <input type="radio" id="open" class="radiobtn" />
+          <input
+            type="radio"
+            id="open"
+            name="filter"
+            value="open"
+            class="radiobtn"
+            @click="filterOpen()"
+          />
           <label for="open">Open</label>
         </section>
         <section>
-          <input type="radio" id="done" class="radiobtn" />
+          <input
+            type="radio"
+            id="done"
+            value="done"
+            name="filter"
+            class="radiobtn"
+            @click="filterDone()"
+          />
           <label for="done">Done</label>
         </section>
-        <button class="btn-remove" id="btn-remove">Remove done Todos</button>
+        <button class="btn-remove" id="btn-remove" @click="removeTodo($event)">
+          Remove done Todos
+        </button>
         <section class="input-text-wrapper">
           <input
             type="text"
@@ -48,8 +72,14 @@
         </section>
         <section>
           <h2>Your Todos</h2>
-          <ul id="list" v-for="{description} of todos" :key="description">
-            <input type="checkbox">{{description}}</input>
+          <ul id="list" v-for="{description, done} of todos" :key="description">
+            <li>
+              <input
+                type="checkbox"
+                :checked="done"
+                @change="safeDone($event)"
+              />{{description}}
+            </li>
           </ul>
         </section>
       </article>
