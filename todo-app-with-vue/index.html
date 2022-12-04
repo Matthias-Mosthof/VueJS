@@ -24,7 +24,7 @@
             value="all"
             checked
             class="radiobtn"
-            @click="filterNone()"
+            @click="loadTodos()"
           />
           <label for="all">All</label>
         </section>
@@ -35,7 +35,7 @@
             name="filter"
             value="open"
             class="radiobtn"
-            @click="filterOpen()"
+            @click="filterOpen"
           />
           <label for="open">Open</label>
         </section>
@@ -46,7 +46,7 @@
             value="done"
             name="filter"
             class="radiobtn"
-            @click="filterDone()"
+            @click="filterDone"
           />
           <label for="done">Done</label>
         </section>

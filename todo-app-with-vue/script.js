@@ -175,6 +175,7 @@ Vue.createApp({
     const response = await fetch("http://localhost:3000/todos");
     this.todos = await response.json();
   },
+  computed: {},
   methods: {
     safeInputText(event) {
       this.addTodos.description = event.target.value;
@@ -222,8 +223,31 @@ Vue.createApp({
         }
       });
     },
-    filterOpen() {
-      this.todos.forEach(() => {});
+    filterDone(event) {
+      let filteredList = undefined;
+      if (event.target.checked) {
+        filteredList = this.todos.filter((todo) => {
+          if (todo.done === true) {
+            return todo;
+          }
+        });
+      }
+      this.todos = filteredList;
+    },
+    filterOpen(event) {
+      let filteredList = undefined;
+      if (event.target.checked) {
+        filteredList = this.todos.filter((todo) => {
+          if (todo.done !== true) {
+            return todo;
+          }
+        });
+      }
+      this.todos = filteredList;
+    },
+    async loadTodos() {
+      const response = await fetch("http://localhost:3000/todos");
+      this.todos = await response.json();
     },
   },
 }).mount("#app");
