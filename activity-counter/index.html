@@ -5,14 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <title>Document</title>
+    <title>My current activity counter app</title>
   </head>
   <body>
     <main id="app">
-      <div class="main">
+      <div class="main" >
+        <h2>New activity? Add down below!</h2>
+        <input type="text" @input="safeInput"></input>
+        <button @click="renderActivity">Add</button>
+      <h2>what are you doing at the moment?</h2>
+      <ul class="wrapper" v-for="{activityName, secondsIn, minutesIn, hoursIn} in times">
+       <li>
         <input type="checkbox" id="activity" @change="timer"></input>
-        <label for="activity">Vue JS</label>
-        <p>{{ hoursIn }} : {{ minutesIn }} : {{ secondsIn }}</p>
+        <label for="activity">{{activityName}}</label>
+        <p> {{hoursIn}} hrs : {{ minutesIn}} minutes : {{secondsIn}} seconds</p>
+      </li> 
+      </ul>
       </div>
     </main>
     <script src="https://unpkg.com/vue@next"></script>
